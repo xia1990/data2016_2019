@@ -1,0 +1,211 @@
+" 常用命令“
+set number "显示行数
+set autoindent  "设置自动缩进下一行与上一行一样
+"-------------------------------------------------------------------
+"设置备份文件
+"if has("vms")
+"set nobackup
+"else
+"set backup
+"endif
+"---------------------------------------------------------------------
+map Q gq       "映射一个Q 为gq 
+set history=50 "设置输入的命令记忆条数 
+set ruler   "设置显示右下角的标尺
+set showcmd  "设置显示右下角命令前缀
+set incsearch "设置键入搜索的字符串的同时就开始搜索已经键入的部分
+"---------------------------------------------------------------------
+syntax on
+set hlsearch
+filetype plugin indent on "自动识别文件类型，用文件类型脚本，使用缩进定义文件 
+autocmd FileType text setlocal textwidth=78 "设置文件类型为text的每行长度78个字符，自动断行
+"colorscheme  inkpot"
+"let g:solarized_termcolors=256
+"let g:solarized_termtrans=1
+"colorscheme solarized 
+"colorscheme Tomorrow-Night-Bright  
+
+"-------------------下面是bundle插件使用需要的配置---------------------------
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'majutsushi/tagbar'
+"Plugin 'taglist.vim'
+Plugin 'scrooloose/nerdtree'
+"Plugin 'jlanzarotta/bufexplorer'
+Plugin 'winmanager'
+Plugin 'winwkspaceexplorer'
+"Plugin 'Shougo/neocomplete.vim'
+Plugin 'tomasr/molokai'
+Plugin 'upsuper/vim-colorschemes'
+"Plugin 'WolfgangMehner/vim-plugins'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'kien/ctrlp.vim'
+Plugin 'suan/vim-instant-markdown'
+Plugin 'godlygeek/tabular'
+Plugin 'luochen1990/rainbow'
+Plugin 'ervandew/supertab'
+Plugin 'fholgado/minibufexpl.vim'
+
+call vundle#end()
+filetype plugin indent on
+syntax on
+"*************************Plugins Configure**************************"
+"
+"
+" 
+"
+"
+"-----------------------neocomplete Settig start--------------------"
+"
+""Note: This option must be set in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+" Disable AutoComplPop.
+"let g:acp_enableAtStartup =1 
+"" Use neocomplete.
+"let g:neocomplete#enable_at_startup = 1
+"" Use smartcase.
+"let g:neocomplete#enable_smart_case = 1
+"" Set minimum syntax keyword length.
+"let g:neocomplete#sources#syntax#min_keyword_length = 3
+"let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+"
+"" Define dictionary.
+"let g:neocomplete#sources#dictionary#dictionaries = {
+"    \ 'default' : '',
+"    \ 'vimshell' : $HOME.'/.vimshell_hist',
+"    \ 'scheme' : $HOME.'/.gosh_completions'
+"        \ }
+"
+"" Define keyword.
+"if !exists('g:neocomplete#keyword_patterns')
+"    let g:neocomplete#keyword_patterns = {}
+"endif
+"let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+"
+"" Plugin key-mappings.
+"inoremap <expr><C-g>     neocomplete#undo_completion()
+"inoremap <expr><C-l>     neocomplete#complete_common_string()
+"
+"" Recommended key-mappings.
+"" <CR>: close popup and save indent.
+"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+"function! s:my_cr_function()
+"  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+"  " For no inserting <CR> key.
+"  "return pumvisible() ? "\<C-y>" : "\<CR>"
+"endfunction
+"" <TAB>: completion.
+"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"" <C-h>, <BS>: close popup and delete backword char.
+"inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+"inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+"" Close popup by <Space>.
+""inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+"
+"" AutoComplPop like behavior.
+""let g:neocomplete#enable_auto_select = 1
+"
+"" Shell like behavior(not recommended).
+""set completeopt+=longest
+""let g:neocomplete#enable_auto_select = 1
+""let g:neocomplete#disable_auto_complete = 1
+""inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+"
+"" Enable omni completion.
+"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+"
+"" Enable heavy omni completion.
+"if !exists('g:neocomplete#sources#omni#input_patterns')
+"  let g:neocomplete#sources#omni#input_patterns = {}
+"endif
+""let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+""let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+""let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+"
+"" For perlomni.vim setting.
+"" https://github.com/c9s/perlomni.vim
+"let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+"
+"
+"-----------------------neocomplete Setting end -------------------"
+"
+"------------------------ctrlp start ------------------------------
+"
+let g:ctrlp_working_path_mode = 'ca'
+let g:ctrlp_by_filename = 1 
+let g:ctrlp_open_multiple_files='v'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip, "mac /liux
+"set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe "windows
+"
+"
+"
+"
+"
+"--------------------winManager Setting-start----------------------
+"
+let g:winManagerWindowLayout = "TagList|FileExplorer,BufExplorer"
+let g:winManagerWidth = 30
+nmap <silent> <F8> :NERDTreeToggle <cr>
+"---------------------winManager end   ---------------------------------
+"
+"
+"---------------------airline Setting  start --------------------------
+let g:airline_theme="luna"
+let g:airline#extension#tabline#enable = 1
+let g:airline#extension#tabline#left_sep=' ' 
+set laststatus=2
+
+"
+"
+"
+"---------------------airline Setting  end --------------------------
+"--------------instant-markdown start ----------------------
+let g:instant_markdown_slow=1
+let g:instant_markdown_autostart= 1
+
+
+let g:tarbar_ctags_bin= '/usr/bin/ctags' 
+set autochdir
+set tags=tags,~/tags/tags;
+"
+nnoremap <C-j> <C-w>j
+nnoremap <C-h> <C-w>h
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+imap <C-n> <Left>
+imap <C-l> <Right>
+imap <C-j> <Down>
+imap <C-k> <Up>
+"
+set nocompatible   "设置不兼容vi模式
+set backspace=indent,eol,start "设置backspace 工作方式
+
+set showcmd
+nmap <F12> : TagbarToggle <CR>
+nmap <F2> : !ctags --tag-relative=yes -f ~/tags/tags -R * <CR>
+nmap <F3> : MRU <CR>
+set wildmenu
+let mapleader= ";"
+nmap <Leader>n :MBEbn <CR>
+nmap <Leader>p :MBEbp <CR>
+nmap <Leader><TAB> :MBEbp <CR>
+set cursorline
+set ignorecase smartcase
+"set cursorcolumn
+set foldmethod=syntax
+"set foldmethod=indent
+set nofoldenable
+set mouse=a 
+set background=dark
+"set list lcs=tab:\|\ 
+if exists('$TMUX')
+  set term=screen-256color
+endif
